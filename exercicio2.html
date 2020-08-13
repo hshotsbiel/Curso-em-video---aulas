@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <style>
+        #fundo {
+            background: rgb(132, 152, 189);
+            padding: 0;
+            margin: 0;            
+        }
+
+        #cabeca{
+            color: white;
+            text-align: center;            
+        }
+
+        #caixa {            
+            background: white; 
+            width: 700px;
+            height: 450px;
+            border-radius: 40px;
+            box-shadow: 5px 5px black;            
+            margin: auto;
+        }        
+
+        #img {             
+            border-radius: 100%;
+            margin-top: 40px;
+            margin-left: 250px;            
+            height: 200px;  
+            width: 200px;                                                                                                                        
+        }
+
+        #centralizar {
+            padding: 20px;
+            font: normal 18pt arial;
+        }
+
+        #texto {
+            text-align: center;
+            font: bold 15pt arial;
+        }
+
+    </style>
+
+</head>
+
+<body id="fundo">
+
+    <header id="cabeca">
+        <h1>Verificador de Idade</h1>
+    </header>
+
+    <section id="caixa">
+        <div id="centralizar">
+            Ano de nascimento: <input type="number" id="data" name="data">
+            <br>
+            <br>
+            Sexo: 
+            <input type="radio" name="radsex" id="mas">
+            <label for="mas">Masculino
+            <input type="radio" name="radsex" id="fem">
+            <label for="fem">Feminino
+            <br>
+            <br>
+            <input type="button" value="Verificar" onclick="verificar()">            
+        </div>
+        <div id="texto">Verificamos</div>
+        <div><img id="img" src="dia.jpeg"></div>       
+    </section>
+
+    <script>
+        function verificar() {
+           var data = new Date()
+           var ano = data.getFullYear()
+           var fano = document.getElementById('data')
+           var res = document.getElementById('texto')
+
+           if(fano.value.length == 0 || fano.value > ano) {
+               window.alert('verifique os dados novamente')
+           } else {
+               var fsex = document.getElementsByName('radsex')
+               var idade = ano - Number(fano.value)
+               var genero = ''
+               var img = document.getElementById('img')               
+                if (fsex[0].checked) {
+                    genero = 'Homem'
+                    if (idade < 18) {
+                        img.src = 'homem-jovem.jpeg'
+                    } else {
+                        img.src = 'homem-adulto.jpeg'
+                    }
+                } else if (fsex[1].checked) {
+                    genero = 'Mulher'
+                    if (idade < 18) {
+                        img.src = 'mulher-jovem.jpeg'
+                    } else {
+                        img.src = 'mulher-adulta.jpeg'
+                    }
+                }
+                res.innerHTML = `Detectamos ${genero} com ${idade} anos.`
+           }
+        }        
+    </script>
+    
+</body>
+</html>

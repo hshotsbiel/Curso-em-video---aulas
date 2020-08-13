@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <style>
+        #fundo {
+            background: rgb(132, 152, 189);
+            padding: 0;
+            margin: 0;            
+        }
+
+        #cabeca{
+            color: white;
+            text-align: center;            
+        }
+
+        #caixa {            
+            background: white; 
+            width: 700px;
+            height: 450px;
+            border-radius: 40px;
+            box-shadow: 5px 5px black;            
+            margin: auto;
+        }   
+
+        #centralizar {
+            padding: 20px;
+            font: normal 18pt arial;
+        }
+
+        #texto {            
+            font: bold 15pt arial;
+        }
+
+    </style>
+
+</head>
+
+<body id="fundo">
+
+    <header id="cabeca">
+        <h1>Tabuada</h1>
+    </header>
+
+    <section id="caixa">
+        <div id="centralizar">
+            Número: <input type="number" id="numero" name="numero">            
+            <input type="button" value="Gerar tabuada" onclick="tabuada()">
+            <br>     
+            <br>
+            <select name="tabuada" id="tabuada" size="10"></select>
+        </div>              
+    </section>
+
+    <script>
+
+      function tabuada() {
+          var numero = document.getElementById('numero')
+          var tabuada = document.getElementById('tabuada')
+          var n = Number(numero.value)
+
+          if (n == 0 || n == '') {
+              window.alert('Erro, digite um númeor')
+          } else {
+              tabuada.innerHTML = ''
+            for(var c = 1; c <= 10; c++) {
+                var item = document.createElement('option')
+                item.text = `${n} x ${c} = ${c*n}`
+                tabuada.appendChild(item)
+            }
+          }          
+      }
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <style>
+        #fundo {
+            background: rgb(132, 152, 189);
+            padding: 0;
+            margin: 0;            
+        }
+
+        #cabeca{
+            color: white;
+            text-align: center;            
+        }
+
+        #caixa {            
+            background: white; 
+            width: 500px;
+            border-radius: 40px;
+            box-shadow: 5px 5px black;            
+            margin: auto;
+        }
+
+        #texto {
+            color: rgb(10, 10, 17);
+            margin-top: 10px;
+            text-align: center;            
+        }
+
+        #img {             
+            border-radius: 100%;
+            padding: 10px;
+            margin-left: 115px; 
+            height: 250px;  
+            width: 250px;
+                                                                                                                        
+        }
+
+    </style>
+
+</head>
+
+<body id="fundo">
+
+    <header id="cabeca">
+        <h1>Hora do dia</h1>
+    </header>
+
+    <section id="caixa">
+        <div><h1 id="texto">Horario</h1></div>
+        <div ><img id="img" src="dia.jpeg"></div>
+    </section>
+
+    <script>
+
+
+        var hora = 21
+        var texto = document.getElementById('texto')
+        var img = document.getElementById('img')        
+        texto.innerText = `Agora são ${hora} horas.`
+
+        if (hora < 6) {
+            img.src = 'madrugada.jpeg'
+            document.body.style.background = '#3a312a'
+        } else if (hora < 12) {
+            img.src = 'dia.jpeg'
+            document.body.style.background = '#1a76d9'
+        } else if (hora < 18) {
+            img.src = 'tarde.jpeg'
+            document.body.style.background = '#daa150'
+        } else {
+            img.src = 'noite.jpeg'
+            document.body.style.background = '#20528d'
+        }
+    </script>
+    
+</body>
+</html>

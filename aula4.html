@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        #acao {
+            font: normal 20pt Arial;
+            color: white;
+            background: chartreuse;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+   <div id="acao" >
+       Interaja..
+   </div>
+    <script>
+        var a = document.getElementById('acao')
+        a.addEventListener('click', clicar)
+        a.addEventListener('mouseenter', entrou)
+        a.addEventListener('mouseout', sair)  
+    
+    
+       function clicar() {
+            a.innerText = 'Clicou'
+       }
+       function sair() {
+            a.innerText = 'Saiu'
+       }
+       function entrou() {
+        a.innerText = 'entrou'
+       }
+
+    </script>
+
+</body>
+</html>

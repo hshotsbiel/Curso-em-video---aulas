@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <style>
+        #fundo {
+            background: rgb(132, 152, 189);
+            padding: 0;
+            margin: 0;            
+        }
+
+        #cabeca{
+            color: white;
+            text-align: center;            
+        }
+
+        #caixa {            
+            background: white; 
+            width: 700px;
+            height: 450px;
+            border-radius: 40px;
+            box-shadow: 5px 5px black;            
+            margin: auto;
+        }   
+
+        #centralizar {
+            padding: 20px;
+            font: normal 18pt arial;
+        }
+
+        #texto {            
+            font: bold 15pt arial;
+        }
+
+    </style>
+
+</head>
+
+<body id="fundo">
+
+    <header id="cabeca">
+        <h1>Tabuada</h1>
+    </header>
+
+    <section id="caixa">
+        <div id="centralizar">
+            Número (entre 1 e 100) <input type="number" id="numero" name="numero">            
+            <input type="button" value="Adicionar" onclick="adicionar()">
+            <br>     
+            <br>
+            <select name="flista" id="flista" size="10"></select>
+        </div>
+        <input type="button" value="Finalizar" onclick="finalizar()">
+        <div id="res"></div>             
+    </section>
+
+    <script>
+
+        let num = document.getElementById('numero')
+        let lista = document.getElementById('flista')
+        let res = document.getElementById('res')
+        let valores = []
+
+        function isNumero(n) {
+            if(Number(n) >= 1 && Number(n) <= 100) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        function inLista(n, l) {
+            if(l.indexOf(Number(n)) != -1) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+      function adicionar() {
+          if(isNumero(num.value) && !inLista(num.value, valores)) {
+            valores.push(Number(num.value))
+            let item = document.createElement('option')
+            item.text = `Valor ${num.value} adicionado`
+            lista.appendChild(item)
+            res.innerHTML = ''
+          } else {
+              window.alert('valor invalido ou já existente na lista')
+          }
+          num.value = ''
+          num.focus()
+      }
+
+      function finalizar() {
+          if(valores.length == 0) {
+              window.alert('n')
+          } else {
+              let tot = valores.length
+              let maior = valores[0]
+              let menor = valores[0]
+              for(let pos in valores) {
+                  if(valores[pos] > maior) 
+                    maior = valores[pos]
+                  if (valores[pos] < menor) 
+                    menor = valores[pos] 
+              }
+              res.innerHTML = ''
+              res.innerHTML += `<p>Ao todo, temos ${tot} números cadastrados</p>`
+              res.innerHTML += `<p>O maior valor informado foi ${maior} </p>`
+              res.innerHTML += `<p>O menor valor informado foi ${menor} </p>`
+          }
+      }         
+
+    </script>
+    
+</body>
+</html>
